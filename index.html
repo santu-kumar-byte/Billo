@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billo Beauty | India's Premium Online Cosmetics & Skincare Destination</title>
+    <meta name="description"
+        content="Shop authentic makeup, skincare, haircare, and luxury fragrances at Billo Beauty inspired by Purplle. Best offers, flash sales, and free shipping!">
+
+    <!-- Font Awesome CDN for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ==========================================================================
+       1. TOP ANNOUNCEMENT TICKER BAR
+       ========================================================================== -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="ticker-wrap">
+                <span class="ticker-badge">FLASH SALE</span>
+                <span>🔥 Use Code: <strong>BILLO20</strong> for Flat 20% OFF | Free Delivery on Orders above
+                    ₹499!</span>
+            </div>
+            <div class="top-links">
+                <a href="#catalogSection"><i class="fas fa-store"></i> Store Finder</a>
+                <a href="#blogSection"><i class="fas fa-magic"></i> Beauty Tips</a>
+                <a href="#" onclick="openBeautyQuiz(); return false;"><i class="fas fa-wand-magic-sparkles"></i> Shade
+                    Quiz</a>
+                <a href="#"><i class="fas fa-headset"></i> Support</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+       2. MAIN HEADER & LOGO
+       ========================================================================== -->
+    <header class="header-main">
+        <div class="container">
+            <div class="header-inner">
+                <!-- Logo -->
+                <a href="#" class="logo">
+                    <img src="assets/billo-logo.png" alt="Billo Beauty Logo" class="logo-img">
+                    BILLO <span class="highlight">BEAUTY</span>
+                </a>
+
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <div class="search-box">
+                        <select class="search-cat-select" id="searchCategorySelect">
+                            <option value="All">All Categories</option>
+                            <option value="Skincare">Skincare</option>
+                            <option value="Makeup">Makeup</option>
+                            <option value="Haircare">Haircare</option>
+                            <option value="Fragrance">Fragrance</option>
+                        </select>
+                        <input type="text" class="search-input" id="searchInput"
+                            placeholder="Search 10,000+ Lipsticks, Serums, Brands..." autocomplete="off">
+                        <button class="search-btn" onclick="renderCatalog()"><i class="fas fa-search"></i></button>
+                    </div>
+                    <!-- Live Autocomplete Results -->
+                    <div class="search-results-dropdown" id="searchResultsDropdown"></div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="header-actions">
+                    <button class="btn-quiz-cta" onclick="openBeautyQuiz()">
+                        <i class="fas fa-sparkles"></i> Skin Quiz
+                    </button>
+
+                    <button class="action-btn"
+                        onclick="document.getElementById('catalogSection').scrollIntoView({behavior:'smooth'})">
+                        <i class="far fa-heart"></i>
+                        <span>Wishlist</span>
+                        <span class="badge-count" id="wishlistBadgeCount">0</span>
+                    </button>
+
+                    <button class="action-btn" id="cartTrigger">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span>Bag</span>
+                        <span class="badge-count" id="cartBadgeCount">0</span>
+                    </button>
+
+                    <button class="action-btn" onclick="showToast('User Account Profile opened!')">
+                        <i class="far fa-user"></i>
+                        <span>Sign In</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================================================
+         MEGAMENU NAVIGATION
+         ========================================================================== -->
+        <nav class="nav-bar">
+            <div class="container">
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-category="Makeup">Makeup <i
+                                class="fas fa-chevron-down"></i></a>
+                        <div class="megamenu">
+                            <div class="megamenu-column">
+                                <h4>Lip Care</h4>
+                                <a href="#" data-category="Makeup">Matte Lipsticks</a>
+                                <a href="#" data-category="Makeup">Liquid Lip Colors</a>
+                                <a href="#" data-category="Makeup">Lip Gloss & Oils</a>
+                                <a href="#" data-category="Makeup">Lip Liners</a>
+                            </div>
+                            <div class="megamenu-column">
+                                <h4>Face Makeup</h4>
+                                <a href="#" data-category="Makeup">Liquid Foundations</a>
+                                <a href="#" data-category="Makeup">Concealers</a>
+                                <a href="#" data-category="Makeup">Blushes & Highlighters</a>
+                                <a href="#" data-category="Makeup">Setting Powders</a>
+                            </div>
+                            <div class="megamenu-column">
+                                <h4>Eye Makeup</h4>
+                                <a href="#" data-category="Makeup">Eyeshadow Palettes</a>
+                                <a href="#" data-category="Makeup">Waterproof Mascaras</a>
+                                <a href="#" data-category="Makeup">Eyeliners & Kajal</a>
+                            </div>
+                            <div class="megamenu-promo">
+                                <img src="assets/billo_hero_banner_makeup_1785089211176.png" alt="Makeup Offer">
+                                <strong>Up to 40% OFF</strong>
+                                <span style="font-size:0.75rem; color:var(--text-muted);">Top Glam Brands</span>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-category="Skincare">Skincare <i
+                                class="fas fa-chevron-down"></i></a>
+                        <div class="megamenu">
+                            <div class="megamenu-column">
+                                <h4>Face Care</h4>
+                                <a href="#" data-category="Skincare">Face Serums</a>
+                                <a href="#" data-category="Skincare">Moisturizers & Creams</a>
+                                <a href="#" data-category="Skincare">Foaming Cleansers</a>
+                                <a href="#" data-category="Skincare">Face Masks & Sheets</a>
+                            </div>
+                            <div class="megamenu-column">
+                                <h4>Sun Protection</h4>
+                                <a href="#" data-category="Skincare">SPF 50 Sunscreens</a>
+                                <a href="#" data-category="Skincare">Matte Sun Gel</a>
+                                <a href="#" data-category="Skincare">Tinted Sunscreens</a>
+                            </div>
+                            <div class="megamenu-column">
+                                <h4>Concern Specific</h4>
+                                <a href="#" data-category="Skincare">Acne Control</a>
+                                <a href="#" data-category="Skincare">Dark Spots & Pigmentation</a>
+                                <a href="#" data-category="Skincare">Glass Skin Glow</a>
+                            </div>
+                            <div class="megamenu-promo">
+                                <img src="assets/billo_hero_banner_skincare_1785089198435.png" alt="Skincare Offer">
+                                <strong>Buy 1 Get 1 Free</strong>
+                                <span style="font-size:0.75rem; color:var(--text-muted);">Billo Glow Range</span>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-category="Haircare">Haircare <i
+                                class="fas fa-chevron-down"></i></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-category="Fragrance">Fragrances <i
+                                class="fas fa-chevron-down"></i></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-category="Bath & Body">Bath & Body</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" style="color:var(--accent);">Flash Offers <span
+                                class="badge-hot">HOT</span></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" onclick="openBeautyQuiz(); return false;"><i
+                                class="fas fa-wand-sparkles" style="color:var(--gold);"></i> Beauty Studio</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ==========================================================================
+       3. HERO CAROUSEL BANNER SECTION
+       ========================================================================== -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="carousel-container">
+                <div class="carousel-slides" id="carouselSlides">
+                    <!-- Slide 1 -->
+                    <div class="slide"
+                        style="background-image: url('assets/billo_hero_banner_skincare_1785089198435.png');">
+                        <div class="slide-content">
+                            <span class="slide-tag">EXCLUSIVE LAUNCH</span>
+                            <h1 class="slide-title">Unveil Glass Skin Brilliance</h1>
+                            <p class="slide-desc">Experience 10x collagen boost with our Vitamin C & Hyaluronic Acid
+                                glow serum series.</p>
+                            <a href="#catalogSection" class="btn-hero-cta">Shop Skincare <i
+                                    class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="slide"
+                        style="background-image: url('assets/billo_hero_banner_makeup_1785089211176.png');">
+                        <div class="slide-content">
+                            <span class="slide-tag">UP TO 50% OFF</span>
+                            <h1 class="slide-title">Velvet Matte Lip Carnival</h1>
+                            <p class="slide-desc">16-hour smudge-proof liquid lipsticks in 24 stunning Indian skin
+                                tones.</p>
+                            <a href="#catalogSection" class="btn-hero-cta">Explore Shades <i
+                                    class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="carousel-btn prev" id="prevSlide"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn next" id="nextSlide"><i class="fas fa-chevron-right"></i></button>
+                <div class="carousel-dots" id="carouselDots"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       4. QUICK CATEGORY AVATARS (STORIES STYLE)
+       ========================================================================== -->
+    <section class="categories-avatars">
+        <div class="container">
+            <div class="avatar-grid">
+                <div class="avatar-item" data-category="Makeup">
+                    <div class="avatar-ring">
+                        <div class="avatar-img-wrap">
+                            <img src="assets/billo_hero_banner_makeup_1785089211176.png" alt="Makeup">
+                        </div>
+                    </div>
+                    <span class="avatar-title">Makeup</span>
+                </div>
+
+                <div class="avatar-item" data-category="Skincare">
+                    <div class="avatar-ring">
+                        <div class="avatar-img-wrap">
+                            <img src="assets/billo_hero_banner_skincare_1785089198435.png" alt="Skincare">
+                        </div>
+                    </div>
+                    <span class="avatar-title">Skincare</span>
+                </div>
+
+                <div class="avatar-item" data-category="Haircare">
+                    <div class="avatar-ring">
+                        <div class="avatar-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=300&q=80"
+                                alt="Haircare">
+                        </div>
+                    </div>
+                    <span class="avatar-title">Haircare</span>
+                </div>
+
+                <div class="avatar-item" data-category="Fragrance">
+                    <div class="avatar-ring">
+                        <div class="avatar-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=300&q=80"
+                                alt="Fragrance">
+                        </div>
+                    </div>
+                    <span class="avatar-title">Fragrance</span>
+                </div>
+
+                <div class="avatar-item" data-category="Bath & Body">
+                    <div class="avatar-ring">
+                        <div class="avatar-img-wrap">
+                            <img src="images/bath.webp" alt="Bath">
+                        </div>
+                    </div>
+                    <span class="avatar-title">Bath & Body</span>
+                </div>
+
+                <div class="avatar-item" onclick="openBeautyQuiz()">
+                    <div class="avatar-ring" style="background: linear-gradient(135deg, var(--gold), #ff0055);">
+                        <div class="avatar-img-wrap"
+                            style="display:flex; align-items:center; justify-content:center; background:#7209b7; color:#fff;">
+                            <i class="fas fa-wand-magic-sparkles" style="font-size:1.5rem;"></i>
+                        </div>
+                    </div>
+                    <span class="avatar-title">Facewash</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       5. FLASH SALE MIDNIGHT COUNTDOWN SECTION
+       ========================================================================== -->
+    <section class="container">
+        <div class="flash-sale-section">
+            <div class="container">
+                <div class="flash-sale-header">
+                    <div class="flash-title-wrap">
+                        <i class="fas fa-bolt"></i>
+                        <div>
+                            <h2>MIDNIGHT BEAUTY FLASH SALE</h2>
+                            <p style="font-size:0.88rem; opacity:0.9;">Deals refresh every night at 12 AM! Grab before
+                                stock runs out.</p>
+                        </div>
+                    </div>
+
+                    <div class="countdown-box">
+                        <span style="font-size:0.8rem; font-weight:700; text-transform:uppercase;">Ends In:</span>
+                        <div class="timer-unit"><span class="timer-val" id="timerHours">11</span><span
+                                class="timer-colon">:</span></div>
+                        <div class="timer-unit"><span class="timer-val" id="timerMins">45</span><span
+                                class="timer-colon">:</span></div>
+                        <div class="timer-unit"><span class="timer-val" id="timerSecs">30</span></div>
+                    </div>
+                </div>
+
+                <!-- Flash Products Cards -->
+                <div class="flash-grid">
+                    <div class="product-card">
+                        <span class="card-badge" style="background:var(--gold); color:#000;">FLAT 35% OFF</span>
+                        <div class="card-img-wrap" onclick="openQuickView(1)">
+                            <img src="assets/billo_hero_banner_skincare_1785089198435.png" alt="Serum">
+                        </div>
+                        <div class="card-body">
+                            <div class="brand-name">Billo Glow</div>
+                            <div class="product-title">Radiance Vitamin C Serum (30ml)</div>
+                            <div class="rating-row">
+                                <span class="rating-badge">★ 4.8</span>
+                                <span class="rating-count">(1,420)</span>
+                            </div>
+                            <div class="price-row">
+                                <span class="current-price">₹549</span>
+                                <span class="mrp-price">₹799</span>
+                            </div>
+                            <div class="stock-progress-wrap">
+                                <div class="stock-bar">
+                                    <div class="stock-fill" style="width: 75%;"></div>
+                                </div>
+                                <div class="stock-text">Only 12 items left!</div>
+                            </div>
+                            <button class="btn-add-cart" onclick="addToCart(1)"><i class="fas fa-shopping-bag"></i>
+                                Claim Deal</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <span class="card-badge">BUY 1 GET 1</span>
+                        <div class="card-img-wrap" onclick="openQuickView(2)">
+                            <img src="assets/billo_hero_banner_makeup_1785089211176.png" alt="Lipstick">
+                        </div>
+                        <div class="card-body">
+                            <div class="brand-name">Sugar Kiss</div>
+                            <div class="product-title">Velvet Touch Ultra Matte Liquid Lipstick</div>
+                            <div class="rating-row">
+                                <span class="rating-badge">★ 4.7</span>
+                                <span class="rating-count">(2,150)</span>
+                            </div>
+                            <div class="price-row">
+                                <span class="current-price">₹399</span>
+                                <span class="mrp-price">₹599</span>
+                            </div>
+                            <div class="stock-progress-wrap">
+                                <div class="stock-bar">
+                                    <div class="stock-fill" style="width: 88%;"></div>
+                                </div>
+                                <div class="stock-text">Only 8 items left!</div>
+                            </div>
+                            <button class="btn-add-cart" onclick="addToCart(2)"><i class="fas fa-shopping-bag"></i>
+                                Claim Deal</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <span class="card-badge" style="background:#10b981;">30% OFF</span>
+                        <div class="card-img-wrap" onclick="openQuickView(7)">
+                            <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=600&q=80"
+                                alt="Sunscreen">
+                        </div>
+                        <div class="card-body">
+                            <div class="brand-name">Billo Glow</div>
+                            <div class="product-title">SPF 50 PA++++ Invisible Sunscreen Gel</div>
+                            <div class="rating-row">
+                                <span class="rating-badge">★ 4.9</span>
+                                <span class="rating-count">(4,300)</span>
+                            </div>
+                            <div class="price-row">
+                                <span class="current-price">₹425</span>
+                                <span class="mrp-price">₹599</span>
+                            </div>
+                            <div class="stock-progress-wrap">
+                                <div class="stock-bar">
+                                    <div class="stock-fill" style="width: 60%;"></div>
+                                </div>
+                                <div class="stock-text">Selling Fast!</div>
+                            </div>
+                            <button class="btn-add-cart" onclick="addToCart(7)"><i class="fas fa-shopping-bag"></i>
+                                Claim Deal</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       6. BRAND SPOTLIGHT SHOWCASE
+       ========================================================================== -->
+    <section class="container">
+        <div class="section-title-wrap">
+            <div>
+                <h2 class="section-title">TOP FEATURED BRANDS</h2>
+                <p style="font-size:0.88rem; color:var(--text-muted); margin-top:4px;">100% Authentic Products Direct
+                    from Brand Owners</p>
+            </div>
+            <a href="#catalogSection" class="view-all-link">View All Brands <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="brands-grid">
+            <div class="brand-card"
+                onclick="document.getElementById('catalogSection').scrollIntoView({behavior:'smooth'})">
+                <div class="brand-logo-circle">LAKMÉ</div>
+                <div class="brand-card-title">Lakmé India</div>
+                <span class="brand-offer">Up to 40% OFF</span>
+            </div>
+
+            <div class="brand-card"
+                onclick="document.getElementById('catalogSection').scrollIntoView({behavior:'smooth'})">
+                <div class="brand-logo-circle" style="background:#fff0f3; color:#be185d; border-color:#be185d;">SUGAR
+                </div>
+                <div class="brand-card-title">Sugar Cosmetics</div>
+                <span class="brand-offer">Flat 25% OFF</span>
+            </div>
+
+            <div class="brand-card"
+                onclick="document.getElementById('catalogSection').scrollIntoView({behavior:'smooth'})">
+                <div class="brand-logo-circle" style="background:#ecfdf5; color:#047857; border-color:#047857;">MAMA
+                </div>
+                <div class="brand-card-title">Mama Earth</div>
+                <span class="brand-offer">Buy 2 Get 1 Free</span>
+            </div>
+
+            <div class="brand-card"
+                onclick="document.getElementById('catalogSection').scrollIntoView({behavior:'smooth'})">
+                <div class="brand-logo-circle" style="background:#eff6ff; color:#1d4ed8; border-color:#1d4ed8;">L'ORÉAL
+                </div>
+                <div class="brand-card-title">L'Oréal Paris</div>
+                <span class="brand-offer">Up to 30% OFF</span>
+            </div>
+
+            <div class="brand-card"
+                onclick="document.getElementById('catalogSection').scrollIntoView({behavior:'smooth'})">
+                <div class="brand-logo-circle"
+                    style="background:var(--primary-light); color:var(--primary); border-color:var(--primary);">BILLO
+                </div>
+                <div class="brand-card-title">Billo Exclusive</div>
+                <span class="brand-offer">Flat 50% OFF</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       7. MAIN INTERACTIVE CATALOG & FILTERS
+       ========================================================================== -->
+    <section class="catalog-section" id="catalogSection">
+        <div class="container">
+            <div class="catalog-layout">
+                <!-- Sidebar Filter Panel -->
+                <aside class="filters-sidebar">
+                    <div class="filter-header">
+                        <h3><i class="fas fa-filter"></i> Filters</h3>
+                        <button class="btn-reset-filters" onclick="resetAllFilters()">Reset All</button>
+                    </div>
+
+                    <!-- Price Filter -->
+                    <div class="filter-group">
+                        <div class="filter-title">Price Range</div>
+                        <div class="price-range-wrap">
+                            <input type="range" class="price-slider" id="priceRange" min="200" max="2000" step="50"
+                                value="2000">
+                            <div class="price-values">
+                                <span>₹200</span>
+                                <span id="maxPriceVal">₹2000</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Brand Checkboxes -->
+                    <div class="filter-group">
+                        <div class="filter-title">Brands</div>
+                        <div class="filter-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" class="brand-checkbox" value="Billo Glow"> Billo Glow
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" class="brand-checkbox" value="Sugar Kiss"> Sugar Kiss
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" class="brand-checkbox" value="Lakmé Icon"> Lakmé Icon
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" class="brand-checkbox" value="Mama Earth Remedies"> Mama Earth
+                                Remedies
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" class="brand-checkbox" value="L'Oréal Pro"> L'Oréal Pro
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Skin Type Filter -->
+                    <div class="filter-group">
+                        <div class="filter-title">Skin Type</div>
+                        <div class="filter-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" class="skin-checkbox" value="All"> All Skin Types
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" class="skin-checkbox" value="Oily"> Oily / Combination
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" class="skin-checkbox" value="Dry"> Dry Skin
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" class="skin-checkbox" value="Acne-Prone"> Acne-Prone
+                            </label>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Main Product Area -->
+                <main class="catalog-main">
+                    <div class="catalog-top-bar">
+                        <div class="results-count" id="resultsCount">Showing <span>20</span> Products</div>
+                        <div class="sort-wrap">
+                            <label for="sortSelect">Sort By:</label>
+                            <select class="sort-select" id="sortSelect">
+                                <option value="popularity">Popularity</option>
+                                <option value="low-high">Price: Low to High</option>
+                                <option value="high-low">Price: High to Low</option>
+                                <option value="rating">Highest Rated</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Products Grid -->
+                    <div class="products-grid" id="productsGrid"></div>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       8. BEAUTY QUIZ BANNER
+       ========================================================================== -->
+    <section class="container">
+        <div class="quiz-banner">
+            <div class="quiz-banner-content">
+                <span class="quiz-banner-tag">AI BEAUTY ADVISOR</span>
+                <h2>Confused about your Skin Routine?</h2>
+                <p>Take our 1-minute personalized Beauty Quiz to find exact shade matches & skincare custom routines!
+                </p>
+                <button class="btn-start-quiz" onclick="openBeautyQuiz()">Take Quiz Now <i
+                        class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Founder Section ===== -->
+
+    <section class="team" id="team">
+
+        <h2>Meet Our Team</h2>
+
+        <div class="team-container">
+
+            <!-- Founder -->
+
+            <div class="team-card">
+                <img src="images/Image.jpeg" alt="Founder">
+                <h3>Santu Kumar</h3>
+                <p>Founder</p>
+            </div>
+
+            <!-- Co-Founder -->
+
+            <div class="team-card">
+                <img src="images/IMG_20260726_161902.jpg" alt="Co-Founder">
+                <h3>Anamika Bharti</h3>
+                <p>Co-Founder</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ==========================================================================
+       10. MODALS & SLIDE-OVER CART DRAWER
+       ========================================================================== -->
+    <!-- Backdrop Overlay -->
+    <div class="modal-overlay" id="modalOverlay"></div>
+
+    <!-- Cart Drawer -->
+    <aside class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-bag" style="color:var(--primary);"></i> Your Beauty Bag</h3>
+            <button class="btn-close-drawer" id="closeCart"><i class="fas fa-times"></i></button>
+        </div>
+
+        <!-- Free Shipping Meter -->
+        <div class="free-shipping-bar">
+            <div class="shipping-text" id="freeShipText">Add ₹499 for FREE Delivery!</div>
+            <div class="shipping-progress">
+                <div class="shipping-progress-fill" id="freeShipProgress" style="width: 0%;"></div>
+            </div>
+        </div>
+
+        <!-- Cart Items List -->
+        <div class="cart-items-body" id="cartItemsBody"></div>
+
+        <!-- Cart Footer with Coupon & Checkout -->
+        <div class="cart-footer">
+            <div class="coupon-wrap">
+                <input type="text" class="coupon-input" id="couponInput" placeholder="Promo Code (BILLO20)">
+                <button class="btn-apply-coupon" onclick="applyCoupon()">Apply</button>
+            </div>
+            <div class="coupon-applied-msg" id="couponAppliedMsg"></div>
+
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span id="cartSubtotal">₹0</span>
+            </div>
+            <div class="summary-row">
+                <span>Discount</span>
+                <span id="cartDiscount" style="color:var(--success);">₹0</span>
+            </div>
+            <div class="summary-row total">
+                <span>Total Payable</span>
+                <span id="cartTotal">₹0</span>
+            </div>
+
+            <button class="btn-checkout" onclick="openCheckout()">Proceed to Checkout <i
+                    class="fas fa-arrow-right"></i></button>
+        </div>
+    </aside>
+
+    <!-- Quick View Modal -->
+    <div class="modal-box modal-overlay" id="quickViewModal" style="display:none; border-radius:16px;">
+        <button class="btn-close-modal" onclick="closeModal('quickViewModal')"><i class="fas fa-times"></i></button>
+        <div id="quickViewContent"></div>
+    </div>
+
+    <!-- Beauty Quiz Modal -->
+    <div class="modal-box modal-overlay" id="quizModal" style="display:none; max-width:600px; padding:30px;">
+        <button class="btn-close-modal" onclick="closeModal('quizModal')"><i class="fas fa-times"></i></button>
+        <div class="quiz-step-progress">
+            <div class="quiz-step-fill" id="quizStepFill"></div>
+        </div>
+        <div id="quizModalBody"></div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal-box modal-overlay" id="checkoutModal" style="display:none; max-width:500px; padding:30px;">
+        <button class="btn-close-modal" onclick="closeModal('checkoutModal')"><i class="fas fa-times"></i></button>
+        <h3 style="font-size:1.3rem; font-weight:800; margin-bottom:16px; color:var(--dark);">Shipping & Payment</h3>
+        <form onsubmit="processOrder(event)">
+            <div style="margin-bottom:12px;">
+                <label style="font-size:0.85rem; font-weight:700; display:block; margin-bottom:4px;">Full Name</label>
+                <input type="text" required placeholder="Santu Kumar"
+                    style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px;">
+            </div>
+            <div style="margin-bottom:12px;">
+                <label style="font-size:0.85rem; font-weight:700; display:block; margin-bottom:4px;">Delivery
+                    Address</label>
+                <input type="text" required placeholder="Flat No., Street, City, Pincode"
+                    style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px;">
+            </div>
+            <div style="margin-bottom:16px;">
+                <label style="font-size:0.85rem; font-weight:700; display:block; margin-bottom:4px;">Payment
+                    Method</label>
+                <select style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px;">
+                    <option value="upi">UPI / GPay / PhonePe</option>
+                    <option value="card">Credit / Debit Card</option>
+                    <option value="cod">Cash on Delivery (COD)</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-checkout">Place Order Now</button>
+        </form>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- ==========================================================================
+       11. FOOTER
+       ========================================================================== -->
+    <div class="footer-trust-badges">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>100% Authentic</h4>
+                    <p>Sourced directly from certified brand owners</p>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-truck-fast"></i>
+                    <h4>Free Express Shipping</h4>
+                    <p>On all orders above ₹499 across India</p>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-rotate-left"></i>
+                    <h4>15 Days Easy Return</h4>
+                    <p>Hassle-free instant refund guarantee</p>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-hand-holding-dollar"></i>
+                    <h4>Cash On Delivery</h4>
+                    <p>Pay at your doorstep with confidence</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer-main">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3><img src="assets/billo-logo.png" alt="Billo Beauty"
+                            style="width:36px;height:36px;border-radius:50%;vertical-align:middle;margin-right:8px;">BILLO
+                        BEAUTY</h3>
+                    <p>India's premier online cosmetics destination inspired by Purplle. Bringing you luxury skincare,
+                        makeup, and beauty innovations.</p>
+                    <div class="newsletter-box">
+                        <input type="email" class="newsletter-input" placeholder="Enter email for 15% OFF code">
+                        <button class="btn-newsletter"
+                            onclick="showToast('Subscribed! Check your inbox for 15% OFF code')">Subscribe</button>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Top Categories</h4>
+                    <ul>
+                        <li><a href="#" data-category="Makeup">Lipsticks & Gloss</a></li>
+                        <li><a href="#" data-category="Skincare">Face Serums</a></li>
+                        <li><a href="#" data-category="Skincare">SPF Sunscreens</a></li>
+                        <li><a href="#" data-category="Haircare">Hair Oils & Shampoo</a></li>
+                        <li><a href="#" data-category="Fragrance">Luxury Perfumes</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Customer Care</h4>
+                    <ul>
+                        <li><a href="#">Track Order</a></li>
+                        <li><a href="#">Returns & Refunds</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">FAQ & Help</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Follow Billo</h4>
+                    <div style="display:flex; gap:12px; font-size:1.4rem; margin-top:8px;">
+                        <a href="#" style="color:#fff;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color:#fff;"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="color:#fff;"><i class="fab fa-youtube"></i></a>
+                        <a href="#" style="color:#fff;"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>© 2026 Billo Beauty Pvt. Ltd. All rights reserved. Designed for excellence.</div>
+                <div style="display:flex; gap:14px;">
+                    <i class="fab fa-cc-visa" style="font-size:1.5rem;"></i>
+                    <i class="fab fa-cc-mastercard" style="font-size:1.5rem;"></i>
+                    <i class="fab fa-google-pay" style="font-size:1.5rem;"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+
+</html>
